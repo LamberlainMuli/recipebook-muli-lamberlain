@@ -4,6 +4,7 @@ import json
 
 RECIPE_LIST_PATH = "ledger/databases/Recipe List Context.txt"
 RECIPES_PATH = "ledger/databases/recipes"
+
 def recipe_list(request):
     #import from databases/Recipe List Context 
     recipe_list_text = open(RECIPE_LIST_PATH,encoding='utf-8')   
