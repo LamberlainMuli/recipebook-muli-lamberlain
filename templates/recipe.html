@@ -45,11 +45,11 @@
 </head>
 <body>
     <div class="recipe-details">
-        <h1 class="recipe-title">{{ name }}</h1>
+        <h1 class="recipe-title">{{ object.name }}</h1>
         <h2 class='ingredients-title'>Ingredients</h2>
         <ul>
-            {% for ingredient in ingredients %}
-                <li class="ingredients-details"> <input type="checkbox">  {{ ingredient.quantity }} - {{ ingredient.name }}</li>
+            {% for ingredient in object.ingredients.all %}
+                <li class="ingredients-details"> <input type="checkbox">  {{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
             {% endfor %}
         </ul>
     </div>
