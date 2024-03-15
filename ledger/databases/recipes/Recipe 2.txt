@@ -1,5 +1,6 @@
 {
     "name": "Recipe 2",
+    "author": "Cook 2",
     "ingredients": [
         {
             "name": "garlic",

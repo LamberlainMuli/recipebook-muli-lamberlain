@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            width:60%;
+            margin:auto;
+        }
+        .recipe-details {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        button {
+            font-family: Poppins;
+            background-color: white;
+            color: black;
+            border: 2px solid #555555;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        button:hover {
+            background-color: #555555;
+            color: white;
+        }
+        h1 {
+            font-family: Poppins;
+            font-weight: 800 !important;
+            font-size: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: Poppins;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            font-family: Cambria;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin:auto;
+            text-align: center;
+            font-family: Cambria;
+        }
+        
+    </style>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>Recipe Book</h1>
+        <hr>
+        <h2>{% block header %}{% endblock %}</h2>
+
+      </header>
+      <div >
+        {% block content %}{% endblock %}
+      </div>
+      <div style="display:flex;justify-content:center">
+      {% if request.user.is_authenticated %}
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+          </form>
+        {% else %}
+          <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Login</button>
+          </form>
+        {% endif %}
+        </div> 
+    </body>
+    </html>

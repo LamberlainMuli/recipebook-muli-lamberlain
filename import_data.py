@@ -1,8 +1,10 @@
 # Description: This script is used to import recipe data from txt files into the database
 # Usage: python manage.py shell < recipebook-muli-lamberlain/import_data.py
+# Alternate Usage: Enter import import_data in the shell
 from ledger.models import Recipe, Ingredient, RecipeIngredient
 import json
 import os
+
 
 RECIPES_PATH = "ledger/databases/recipes"
 
@@ -15,6 +17,7 @@ for recipe in os.listdir(RECIPES_PATH):
     # Create the recipe
     recipe = Recipe()
     recipe.name = recipe_details['name']
+    recipe.author = recipe_details['author']
     # Save the recipe
     recipe.save()
     print(f'Created {recipe.name}')

@@ -1,59 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Recipe Book</title>
-    <style>
-        body {
-            width:60%;
-            margin:auto;
-        }
-        .recipe-list {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .recipe-list h1 {
-            font-family: Poppins;
-            font-weight: 800 !important;
-            font-size: 30px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .recipe-list ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        .recipe-list li {
-            margin-bottom: 10px;
-        }
-        .recipe-list a {
-            text-decoration: none;
-            color: #000;
-            font-family: Poppins;
-            font-weight: 600 !important;
-            font-size: 20px;
-        }
-        .recipe-list a:hover {
-            text-decoration: underline;
-        }
-        .recipe-list li:hover {
-            background-color: #f4f4f4;
-            padding: 5px;
-            border-radius: 5px;
-        }
-    </style>
-</head>
-<body>
-    <div class="recipe-list">
-        <h1>Recipe List</h1>
-        <ul>
-        {% for recipe in object_list %}
-            <li><a href="{{recipe.get_absolute_url}}">{{ recipe.name }}</a></li>
-        {% endfor %}
-        </ul>
-    </div>
-</body>
-</html>
+{% extends 'recipe_base.html' %}
+{% load static %}
+{% block header %}Recipe List{% endblock %}
+{% block title %}Recipe List{% endblock %}
+{% block content %}
+  <ul>
+    {% for recipe in object_list %}
+      <li>   
+        <a href="{{ recipe.get_absolute_url }}">{{ recipe.name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

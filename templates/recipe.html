@@ -1,58 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Recipe Book</title>
-    <style>
-        body {
-            width:60%;
-            margin:auto;
-        }
-        .recipe-details {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-        .back {
-            background-color: black;
-            color: #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: inline-block;
-            text-decoration: none;
-        }
-        .back:hover {
-            background-color: #333;
-        }
-        .recipe-title {
-            font-family: Poppins;
-            font-weight: 800 !important;
-            font-size: 30px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .ingredients-title {
-            font-family:Poppins;
-            font-weight:800 !important;
-        }
-        .ingredients-details {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-    </style>
-</head>
-<body>
-    <div class="recipe-details">
-        <h1 class="recipe-title">{{ object.name }}</h1>
-        <h2 class='ingredients-title'>Ingredients</h2>
-        <ul>
-            {% for ingredient in object.ingredients.all %}
-                <li class="ingredients-details"> <input type="checkbox">  {{ ingredient.quantity }} - {{ ingredient.ingredient.name }}</li>
-            {% endfor %}
-        </ul>
-    </div>
-    <a href="/ledger/recipes/list" class="back" >Back to Recipe List</a>
-</body>
-</html>
+{% extends 'recipe_base.html' %}
+{% load static %}
+
+{% block header %}Recipe Details{% endblock %}
+{% block title %}{{ object.name }}{% endblock %}
+{% block content %}
+  <h3>Name: {{ object.name }} by {{ object.author }}</h3>
+  <h3>Ingredients:</h3>
+  <ul>
+    {% for ingredient in object.ingredients.all %}
+      <li>{{ ingredient.ingredient.name }}, {{ ingredient.quantity }}</li>
+    {% endfor %}
+  </ul>
+  <div style="display:flex;justify-content:center">
+  <a href="/recipes/list">
+    <button>Go back to Recipe List</button>
+  </a>
+</div>
+{% endblock %}

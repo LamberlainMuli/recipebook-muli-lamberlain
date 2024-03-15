@@ -1,5 +1,6 @@
 {
     "name": "Recipe 1",
+    "author": "Cook 1",
     "ingredients": [
         {
             "name": "tomato",
